@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="fill_parent">
+    <item android:id="@+id/add"
+        android:icon="@drawable/tab_answer_normal"
+        android:title="@string/main_menu_item_add" />
+    <item android:id="@+id/filter"
+        android:icon="@drawable/tab_answer_pressed"
+        android:title="@string/main_menu_item_filter" />
+</menu>

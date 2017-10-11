@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">LeetcodeNotebook</string>
+    <string name="main_menu_item_add">Add</string>
+    <string name="main_menu_item_filter">Filter</string>
+    <string name="level_tag_easy">Easy</string>
+    <string name="level_tag_medium">Medium</string>
+    <string name="level_tag_hard">Hard</string>
+</resources>
+
