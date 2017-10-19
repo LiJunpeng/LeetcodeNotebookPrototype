@@ -2,8 +2,15 @@
     <string name="app_name">LeetcodeNotebook</string>
     <string name="main_menu_item_add">Add</string>
     <string name="main_menu_item_filter">Filter</string>
+    <string name="main_menu_item_info">Info</string>
     <string name="level_tag_easy">Easy</string>
     <string name="level_tag_medium">Medium</string>
     <string name="level_tag_hard">Hard</string>
+    <string name="question_menu_title">Question</string>
+    <string name="answer_menu_title">Answer</string>
+    <string name="menu_title_add_question">Add Question</string>
+    <string name="menu_title_filter_setting">Filter Setting</string>
+    <string name="about_menu_title">About</string>
+    <string name="menu_title_edit">Edit</string>
 </resources>
 

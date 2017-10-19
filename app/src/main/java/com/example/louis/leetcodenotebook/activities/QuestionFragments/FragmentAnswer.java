@@ -34,8 +34,6 @@ public class FragmentAnswer extends Fragment{
 
 
     public void setData(Map<String, String> data) {
-        //System.out.println("====> " + data.get(3));
         this.questionData = data;
-//        textViewAnswer.setText(questionData.get("answer"));
     }
 }

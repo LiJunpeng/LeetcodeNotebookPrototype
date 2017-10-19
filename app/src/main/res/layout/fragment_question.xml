@@ -5,12 +5,14 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/iconPressed"
     tools:context="com.example.louis.leetcodenotebook.activities.MainActivity">
 
     <ScrollView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:padding="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -21,34 +23,101 @@
                 android:text="title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/textview_title" />
+                android:textSize="24dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:id="@+id/textview_title"
+                android:background="@android:color/white"/>
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:layout_marginTop="5dp"
+                android:layout_alignParentLeft="true"
+                android:scaleType="fitStart"
+                android:id="@+id/imageview_level" />
+
 
             <TextView
-                android:text="level"
+                android:text="Description"
+                android:textSize="16dp"
+                android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/textview_level" />
-
+                android:id="@+id/textlabel_description"
+                />
             <TextView
                 android:text="description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/textview_description" />
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:id="@+id/textview_description"
+                android:background="@android:color/white"/>
 
+
+            <TextView
+                android:text="Hint"
+                android:textSize="16dp"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textlabel_hint"
+                />
             <TextView
                 android:text="hint"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/textview_hint" />
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:id="@+id/textview_hint"
+                android:background="@android:color/white"/>
 
 
+            <TextView
+                android:text="Tags"
+                android:textSize="16dp"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textlabel_tag"
+                />
             <com.zhy.view.flowlayout.TagFlowLayout
                 android:id="@+id/flowlayout_static_tag"
                 zhy:max_select="-1"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:padding="20dp">
+                android:padding="5dp">
             </com.zhy.view.flowlayout.TagFlowLayout>
+
+
+            <TextView
+                android:text="Note"
+                android:textSize="16dp"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textlabel_note"
+                />
+            <TextView
+                android:text="hint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:id="@+id/textview_note"
+                android:background="@android:color/white"/>
+
 
         </LinearLayout>
 

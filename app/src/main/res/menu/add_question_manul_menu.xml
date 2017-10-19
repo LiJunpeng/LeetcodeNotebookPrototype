@@ -4,8 +4,10 @@
 
     <item
         android:id="@+id/button_save_question"
-        android:icon="@drawable/bottom_bar"
+        android:icon="@drawable/save_button"
+
         android:title="Save"
         app:showAsAction="ifRoom" />
+
 
 </menu>

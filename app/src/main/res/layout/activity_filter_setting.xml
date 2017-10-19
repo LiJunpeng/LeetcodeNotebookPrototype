@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:zhy="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/iconPressed">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_filter_setting"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
+
+        <ImageButton
+            android:id="@+id/toolbar_filter_back_button"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:scaleType="centerInside"
+            android:gravity="left"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/ic_back_button"
+            android:background="@android:color/transparent"/>
+
+        <TextView
+            android:id="@+id/toolbar_filter_title"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/menu_title_filter_setting"
+            android:textSize="24dp"
+            android:textColor="@color/iconPrimary"
+            android:layout_gravity="center"/>
+
+        <Button
+            android:id="@+id/toolbar_filter_apply_button"
+            android:text="Apply"
+            android:textSize="16dp"
+            android:textColor="@color/iconPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerInside"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="right"
+            android:background="@android:color/transparent"/>
+
+    </android.support.v7.widget.Toolbar>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:text="Level"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:layout_marginTop="5dp"
+                android:id="@+id/textview_setting_filter_level" />
+
+            <LinearLayout
+                android:id="@+id/linearlayout_checkboxes"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:background="@android:color/white"
+                >
+
+                <CheckBox android:id="@+id/checkbox_level_easy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/level_tag_easy"
+                    android:checked="true"
+                    />
+                <CheckBox android:id="@+id/checkbox_level_medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/level_tag_medium"
+                    android:checked="true"
+                    />
+                <CheckBox android:id="@+id/checkbox_level_hard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/level_tag_hard"
+                    android:checked="true"
+                    />
+
+            </LinearLayout>
+
+            <TextView
+                android:text="Tags"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:layout_marginTop="5dp"
+                android:id="@+id/textview_setting_filter_tag" />
+
+            <com.zhy.view.flowlayout.TagFlowLayout
+                android:id="@+id/flowlayout_setting_tag"
+                zhy:max_select="-1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@android:color/white"
+                >
+            </com.zhy.view.flowlayout.TagFlowLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>

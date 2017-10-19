@@ -1,6 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:background="@color/iconPressed">
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="Adding question from browser"
+        android:textSize="24dp"
+        />
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="1. Make sure your device and your computer are connecting to the same network"
+        android:textSize="18dp"
+        android:layout_marginTop="15dp"/>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="2. Click the 'Start' button"
+        android:textSize="18dp"
+        android:layout_marginTop="15dp"/>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="3. Open Internet browser on your computer and enter the following address:"
+        android:textSize="18dp"
+        android:layout_marginTop="15dp"/>
+
+
+    <TextView
+        android:id="@+id/textview_ip_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        />
+
+    <ImageButton
+        android:id="@+id/button_toggle_server"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:layout_marginTop="20dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_server_start"
+        android:layout_gravity="center"
+        android:background="@android:color/transparent"
+        />
+
+
 
 </LinearLayout>

@@ -2,7 +2,8 @@
     xmlns:zhy="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/iconPressed">
     <!--<ImageView-->
         <!--android:src="@drawable/header_logo"-->
         <!--android:layout_width="match_parent"-->
@@ -11,25 +12,40 @@
         <!--android:background="#FFFFBB33"-->
         <!--android:contentDescription="@string/app_name" />-->
 
-
-    <TextView
-        android:id="@+id/textview_select_tag"
-        android:text="Select tags"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"
-        android:layout_marginBottom="4dp"
-        />
+        >
 
-    <com.zhy.view.flowlayout.TagFlowLayout
-        android:id="@+id/flowlayout_select_tag"
-        zhy:max_select="-1"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:padding="20dp">
-    </com.zhy.view.flowlayout.TagFlowLayout>
+        <TextView
+            android:id="@+id/textview_select_tag"
+            android:text="Select tags"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:paddingTop="5dp"
+            android:paddingLeft="5dp"
+            android:paddingBottom="5dp"
+            android:layout_gravity="center_vertical"
+            />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/white"
+        android:layout_margin="10dp">
+
+        <com.zhy.view.flowlayout.TagFlowLayout
+            android:id="@+id/flowlayout_select_tag"
+            zhy:max_select="-1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp">
+        </com.zhy.view.flowlayout.TagFlowLayout>
+    </ScrollView>
 
 
     <TextView
@@ -37,6 +53,7 @@
         android:text="Create a new tag"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginLeft="4dp"
         android:layout_marginRight="4dp"
@@ -46,7 +63,9 @@
     <LinearLayout
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@android:color/white"
+        android:layout_margin="10dp">
 
         <EditText
             android:id="@+id/edittext_create_new_tag"
@@ -56,16 +75,29 @@
             android:layout_marginTop="4dp"
             android:layout_marginLeft="4dp"
             android:layout_marginRight="4dp"
-            android:layout_marginBottom="16dp"
             android:fontFamily="sans-serif"
+            android:maxLines="2"
             />
 
-        <ImageButton
-            android:id="@+id/imagebuttn_create_new_tag"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#ffffff"
-            android:src="@drawable/bottom_bar" />/>
+        <!--<ImageButton-->
+            <!--android:id="@+id/imagebuttn_create_new_tag"-->
+            <!--android:layout_width="24dp"-->
+            <!--android:layout_height="24dp"-->
+            <!--android:layout_margin="5dp"-->
+            <!--android:layout_gravity="right"-->
+            <!--android:background="#ffffff"-->
+            <!--android:scaleType="center"-->
+            <!--android:src="@drawable/ic_menu_add" />-->
+
+        <Button
+            android:id="@+id/button_create_tag"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_margin="5dp"
+            android:text="Create"
+            android:textColor="@color/iconPrimary"
+            android:textSize="12dp"
+            android:background="@color/iconPressed"/>
 
         </LinearLayout>
 </LinearLayout>

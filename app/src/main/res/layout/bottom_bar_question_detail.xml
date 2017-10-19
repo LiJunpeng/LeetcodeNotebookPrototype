@@ -2,9 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/ly_main_tab_bottom"
     android:layout_width="fill_parent"
-    android:layout_height="55dp"
+    android:layout_height="60dp"
     android:layout_alignParentBottom="true"
-    android:background="@drawable/bottom_bar" >
+    android:background="@color/menuPrimary" >
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -23,13 +23,16 @@
                 android:id="@+id/btn_tab_bottom_question"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingTop="5dp"
                 android:background="#0000"
                 android:clickable="false"
-                android:src="@drawable/tab_question_pressed" />
+                android:src="@drawable/ic_tab_question_pressed" />
 
             <TextView
+                android:id="@+id/text_tab_bottom_question"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/iconPressed"
                 android:text="Question" />
         </LinearLayout>
 
@@ -46,13 +49,16 @@
                 android:id="@+id/btn_tab_bottom_answer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingTop="5dp"
                 android:background="#0000"
                 android:clickable="false"
-                android:src="@drawable/tab_answer_normal" />
+                android:src="@drawable/ic_tab_answer_normal" />
 
             <TextView
+                android:id="@+id/text_tab_bottom_answer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/iconPrimary"
                 android:text="Answer" />
         </LinearLayout>
 

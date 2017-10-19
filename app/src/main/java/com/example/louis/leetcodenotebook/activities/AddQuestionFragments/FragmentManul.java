@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -46,18 +47,19 @@ public class FragmentManul extends Fragment implements DialogSelectTagListener {
     private EditText editTextAnswer;
     private RadioGroup radioGroupLevel;
     private TagFlowLayout mFlowLayout;
+    private EditText editTextNote;
 
-    private ActionMenuItemView buttonSaveQuestion;
+    private ImageButton buttonSaveQuestion;
 
     private int level = 1;
     private List<String> tagNames = new ArrayList<>();
     private List<Tag> tagList = new ArrayList<>();
 
-    final String DB_NAME_QUESTIONS = "questions";
-    final String TABLE_NAME_TAG = "tag_table";
-    final String TABLE_NAME_QUESTION_TAG = "question_tag_table";
-    final String TABLE_NAME_QUESTIONS = "questions_table";
-    private QuestionsDatabaseHelper questionsHelper;
+//    final String DB_NAME_QUESTIONS = "questions";
+//    final String TABLE_NAME_TAG = "tag_table";
+//    final String TABLE_NAME_QUESTION_TAG = "question_tag_table";
+//    final String TABLE_NAME_QUESTIONS = "questions_table";
+//    private QuestionsDatabaseHelper questionsHelper;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -78,9 +80,11 @@ public class FragmentManul extends Fragment implements DialogSelectTagListener {
             @Override
             public void afterTextChanged(Editable editable) {
                 if (editable.length() != 0) {
-                    buttonSaveQuestion.setEnabled(true);
+                    buttonSaveQuestion.setEnabled(true);    // Enable save button when a title is given
+                    buttonSaveQuestion.setAlpha((float) 1.0);
                 } else {
                     buttonSaveQuestion.setEnabled(false);
+                    buttonSaveQuestion.setAlpha((float) 0.2);
                 }
             }
         });
@@ -102,29 +106,16 @@ public class FragmentManul extends Fragment implements DialogSelectTagListener {
                     default:
                         break;
                 }
-                System.out.println("Select: " + level);
             }
         });
 
         editTextHint = (EditText) view.findViewById(R.id.edittext_add_question_hint);
         editTextDescription = (EditText) view.findViewById(R.id.edittext_add_question_description);
         editTextAnswer = (EditText) view.findViewById(R.id.edittext_add_question_answer);
+        editTextNote = (EditText) view.findViewById(R.id.edittext_add_question_note);
 
-
-//        questionsHelper = new QuestionsDatabaseHelper(getActivity(), DB_NAME_QUESTIONS, 1);
-//        System.out.println("====> " + DatabaseUtils.queryNumEntries(questionsHelper.getReadableDatabase(), "tag_table"));
-//        Cursor cursor = questionsHelper.getReadableDatabase().rawQuery("select * from " + TABLE_NAME_TAG, null);
-//        while (cursor.moveToNext()) {
-//            tagList.add(new Tag(cursor.getInt(0), cursor.getString(1)));
-//        }
-//        for (Tag t : tagList) {
-//            tagNames.add(t.getName());
-//        }
-        tagNames.add("+");
-
+        tagNames.add("+");    // Create a '+' tag for user to add tags
         mFlowLayout = (TagFlowLayout) view.findViewById(R.id.flowlayout_edit_tag);
-//        tagList.add("test");
-//        tagList.add("+");
         final LayoutInflater mInflater = LayoutInflater.from(view.getContext());
         mFlowLayout.setAdapter(new TagAdapter<String>(tagNames) {
             @Override
@@ -150,18 +141,16 @@ public class FragmentManul extends Fragment implements DialogSelectTagListener {
 
                 if (position == tagNames.size() - 1) {   // add tag
 
-                    DialogFragment selectTag = new DialogSelectTag();
+                    DialogFragment selectTag = new DialogSelectTag();    // Create dialog
                     selectTag.setTargetFragment(FragmentManul.this, 0);
                     Bundle args = new Bundle();
                     ArrayList<String> tagToAvoid = new ArrayList<String>();
                     for (String tag : tagNames) {
                         tagToAvoid.add(tag);
                     }
-                    args.putStringArrayList("tagToAvoid", tagToAvoid);
+                    args.putStringArrayList("tagToAvoid", tagToAvoid);  // Pass tag names that already selected
                     selectTag.setArguments(args);
                     selectTag.show(getFragmentManager(), "selectTag");
-
-                    //System.out.println("=========> add");
                 } else {    // delete tag
                     new AlertDialog.Builder(getContext())
                             .setTitle("Delete Tag")
@@ -191,23 +180,29 @@ public class FragmentManul extends Fragment implements DialogSelectTagListener {
         return view;
     }
 
-    public void setButton(ActionMenuItemView button) {
+    public void setButton(ImageButton button) {
         this.buttonSaveQuestion = button;
     }
 
-    public Map<String, String> getInput() {
+    public Map<String, String> getInput() {   // Return input as map back to the AddQuestionActivity
         Map<String, String> input = new HashMap<>();
         input.put("title", editTextTitle.getText().toString());
         input.put("level", String.valueOf(level));
         input.put("hint", editTextHint.getText().toString());
         input.put("description", editTextDescription.getText().toString());
         input.put("answer", editTextAnswer.getText().toString());
+        input.put("note", editTextNote.getText().toString());
 
         return input;
     }
 
+    public List<String> getTags() {
+        tagNames.remove(tagNames.size() - 1);  // remove '+' tag
+        return tagNames;
+    }
+
     @Override
-    public void onTagSelected(Set<String> tagSeleted) {
+    public void onTagSelected(Set<String> tagSeleted) {    // select tag from DialogSelectTag window
         for (String tagName : tagSeleted) {
             if (!tagNames.contains(tagName)) {
                 tagNames.add(tagNames.size() - 1, tagName);
@@ -217,5 +212,16 @@ public class FragmentManul extends Fragment implements DialogSelectTagListener {
         mFlowLayout.getAdapter().notifyDataChanged();
     }
 
+    public boolean isEditting () {
+        if (editTextTitle.getText().toString().length() != 0
+            || editTextHint.getText().toString().length() != 0
+            || editTextDescription.getText().toString().length() != 0
+            || editTextAnswer.getText().toString().length() != 0
+            || editTextNote.getText().toString().length() != 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 }

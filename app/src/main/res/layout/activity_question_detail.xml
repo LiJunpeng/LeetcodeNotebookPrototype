@@ -11,8 +11,39 @@
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
         android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        />
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
+
+        <ImageButton
+            android:id="@+id/toolbar_back_button"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_back_button"
+            android:background="@android:color/transparent"/>
+
+        <TextView
+            android:id="@+id/toolbar_question_detail_title"
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/question_menu_title"
+            android:textSize="24dp"
+            android:textColor="@color/iconPrimary"
+            android:layout_gravity="center"/>
+
+        <Button
+            android:id="@+id/button_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit"
+            android:textSize="16dp"
+            android:textColor="@color/iconPrimary"
+            android:scaleType="centerInside"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="right"
+            android:background="@android:color/transparent"
+            />
+
+    </android.support.v7.widget.Toolbar>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/id_viewpager"

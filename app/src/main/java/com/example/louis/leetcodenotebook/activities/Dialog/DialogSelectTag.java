@@ -1,6 +1,7 @@
 package com.example.louis.leetcodenotebook.activities.Dialog;
 
 import android.app.Dialog;
+import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.database.Cursor;
 import android.media.Image;
@@ -37,7 +38,7 @@ import java.util.Set;
 public class DialogSelectTag extends DialogFragment {
 
     private TagFlowLayout mTagFlowLayout;
-    private ImageButton imageButtonCreateNewTag;
+    private Button imageButtonCreateNewTag;
     private EditText editTextCreateNewTag;
 
     final String DB_NAME_QUESTIONS = "questions";
@@ -109,19 +110,27 @@ public class DialogSelectTag extends DialogFragment {
 
         editTextCreateNewTag = (EditText) dialogView.findViewById(R.id.edittext_create_new_tag);
 
-        imageButtonCreateNewTag = (ImageButton) dialogView.findViewById(R.id.imagebuttn_create_new_tag);
+        imageButtonCreateNewTag = (Button) dialogView.findViewById(R.id.button_create_tag);
         imageButtonCreateNewTag.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String tagToCreate = editTextCreateNewTag.toString();
+                String tagToCreate = editTextCreateNewTag.getText().toString().trim();
                 if (tagToCreate.length() != 0) {
-                    Cursor cursor = questionsHelper.getReadableDatabase().rawQuery("select * from " + TABLE_NAME_TAG + " where name = " + tagToCreate, null);
+                    Cursor cursor = questionsHelper.getReadableDatabase().rawQuery("select * from " + TABLE_NAME_TAG + " where name = '" + tagToCreate + "'", null);
                     if (cursor != null && cursor.getCount() > 0) {
                         Toast.makeText(getContext(), "Tag Name already exists!", Toast.LENGTH_SHORT).show();
                     } else {
-//                        questionsHelper.getWritableDatabase().rawQuery("insert into " + TABLE_NAME_TAG + " (name) values (" + tagToCreate + ")", null);
-//                        tagNames.add(tagToCreate);
-//                        mTagFlowLayout.getAdapter().notifyDataChanged();
+
+                        ContentValues questionValues = new ContentValues();
+                        questionValues.put("name", tagToCreate);
+                        if (questionsHelper.getWritableDatabase().insert(TABLE_NAME_TAG, null, questionValues) > 0) {
+                            tagNames.add(tagToCreate);
+                            mTagFlowLayout.getAdapter().notifyDataChanged();
+                            editTextCreateNewTag.setText("");
+                        } else {
+                            Toast.makeText(getContext(), "Add tag failed", Toast.LENGTH_SHORT).show();
+                        }
+
                     }
                 }
             }
